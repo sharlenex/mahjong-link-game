@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#91bd8e">
+  <title>雀影连连 · 10×10 预览</title>
+  <link rel="stylesheet" href="font-fixes.css">
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#91bd8e;color:#14231c;font-family:system-ui,"Microsoft YaHei",sans-serif}body{padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+    .app{width:min(100%,720px);min-height:100dvh;margin:auto;padding:12px;display:flex;flex-direction:column}.top,.stats{display:flex;align-items:center;justify-content:space-between}.top h1{margin:0;font-size:clamp(22px,5vw,32px)}.gem{background:#fff;border:3px solid #17352b;border-radius:20px;padding:7px 14px;box-shadow:0 4px #397147;font-weight:800}.steps{display:flex;justify-content:center;gap:8px;margin:12px 0}.steps i{display:grid;place-items:center;width:34px;height:34px;border:2px solid #527c67;border-radius:50%;background:#b5d1af;font-style:normal}.steps i:first-child{background:#ffd348;border-color:#17352b}.stats{background:#ffffffb8;border:3px solid #17352b;border-radius:15px;padding:9px 12px;font-size:12px}.stats b{font-size:18px}.rule{text-align:center;font-weight:800;font-size:12px;margin:9px 0}.board{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:2px;padding:3px;background:#78a97b;border-radius:8px}.tile{aspect-ratio:3/4;min-width:0;border:1.5px solid #17352b;border-radius:5px;background:linear-gradient(135deg,#fffef7,#f3f1e6);box-shadow:inset -1px -2px #c2d0c3,0 2px #3ea866,0 3px #126f46;display:grid;place-items:center;padding:4%;overflow:hidden}.wan{line-height:.78}.wan b{font-size:clamp(14px,5.1vw,30px)}.wan i{font-size:clamp(9px,2.7vw,16px)}.dots{width:82%;height:82%;display:grid;grid-template-columns:repeat(3,1fr);place-items:center;gap:3%}.dots i{width:72%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff 0 17%,#e4363d 20% 40%,#fff 42% 49%,#188b45 52% 72%,#075c36 74%)}.dots.n1{grid-template-columns:1fr}.dots.n2{grid-template-columns:1fr}.dots.n4{grid-template-columns:repeat(2,1fr)}.label{text-align:center;margin:8px 0 2px;font-size:12px;font-weight:700}.back{display:block;text-align:center;margin-top:10px;color:#17352b;font-weight:800;text-decoration:none}@media(max-height:760px){.top h1{font-size:20px}.steps{margin:7px 0}.stats{padding:6px 9px}.rule{margin:5px 0}.app{padding:8px}}
+  </style>
+</head>
+<body><main class="app"><header class="top"><h1>雀影连连</h1><span class="gem">◆ 80</span></header><div class="steps"><i>1</i><i>🔒</i><i>🔒</i><i>🔒</i><i>🔒</i></div><section class="stats"><span>第 <b>1</b>/200关</span><span>剩余 <b>100</b></span><span>用时 <b>00:00</b></span><span>得分 <b>0</b></span></section><div class="rule">10×10 牌面尺寸预览 · 不影响正式游戏</div><div class="board" id="board"></div><div class="label">仅用于查看 10×10 的视觉效果</div><a class="back" href="index.html">返回正式游戏（7×14）</a></main><script>
+const ranks=['一','二','三','四','五','六','七','八','九'];
+function face(v){let n=v%9+1;if(v<18)return `<span class="wan"><b>${ranks[n-1]}</b><i>萬</i></span>`;return `<span class="dots n${n}">${'<i></i>'.repeat(n)}</span>`}
+let values=[];for(let i=0;i<50;i++)values.push(i%27,i%27);for(let i=values.length-1;i;i--){let j=Math.random()*(i+1)|0;[values[i],values[j]]=[values[j],values[i]]}document.querySelector('#board').innerHTML=values.map(v=>`<div class="tile">${face(v)}</div>`).join('');
+</script></body></html>
