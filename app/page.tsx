@@ -15,7 +15,7 @@ const idx=(r:number,c:number)=>r*COLS+c;
 function shuffle<T>(v:T[]){const a=[...v];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function newBoard(n:number):Cell[]{const a:number[]=[];for(let i=0;i<ROWS*COLS/2;i++){const v=i%n;a.push(v,v)}return shuffle(a)}
 function tileName(v:number){return`${RANKS[v%9]}${v<9?"万":v<18?"筒":"条"}`}
-function TileFace({value}:{value:number}){return <img className="tile-image" src={`/tiles/tile-${value}.png`} alt="" draggable={false}/>}
+function TileFace({value}:{value:number}){return <img className="tile-image" src={`/tiles/tile-real-${value}.png`} alt="" draggable={false}/>}
 
 function findPath(board:Cell[],a:Pos,b:Pos):Pos[]|null{
  if(a[0]===b[0]&&a[1]===b[1]||board[idx(...a)]==null||board[idx(...a)]!==board[idx(...b)])return null;
