@@ -1,0 +1,5 @@
+.board{grid-template-columns:repeat(10,minmax(0,1fr));width:min(100%,calc((100dvh - 245px)*.75),580px)!important}
+.tile{min-width:0;padding:3%!important}
+.tile-image{display:block;width:96%;height:96%;object-fit:contain;pointer-events:none;user-select:none}
+.tools{width:min(100%,calc((100dvh - 245px)*.75),580px)!important;margin-inline:auto}
+@media(max-height:720px){.board,.tools{width:min(100%,calc((100dvh - 205px)*.75),540px)!important}}
