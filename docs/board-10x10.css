@@ -1,6 +1,6 @@
 .board-wrap{width:min(100%,560px)!important;max-width:560px}
 html,body,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}html,body{overscroll-behavior:none}.board,.board-wrap{overflow-anchor:none}
-.board{grid-template-columns:repeat(10,minmax(0,1fr));width:100%!important}
+.board{grid-template-columns:repeat(10,minmax(0,1fr));grid-template-rows:repeat(10,minmax(0,1fr));width:100%!important;aspect-ratio:3/4}.board .tile{width:100%;height:100%;aspect-ratio:auto!important}
 .tile{min-width:0;padding:3%!important}
 .tile-image{display:block;width:96%;height:96%;object-fit:contain;pointer-events:none;user-select:none}
 .tools{width:min(100%,560px)!important;margin-inline:auto}
