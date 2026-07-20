@@ -1,0 +1,6 @@
+@font-face{font-family:MahjongSerif;src:url('mahjong-serif.woff2') format('woff2');font-weight:700;font-display:block}
+.wan,.wan b,.wan i{font-family:MahjongSerif,serif!important}
+.wan b{color:#111!important;-webkit-text-fill-color:#111}
+.wan i{color:#d93435!important;-webkit-text-fill-color:#d93435}
+.tile{color:#111;-webkit-text-fill-color:#111}
+.path{inset:3px;width:calc(100% - 6px);height:calc(100% - 6px)}
