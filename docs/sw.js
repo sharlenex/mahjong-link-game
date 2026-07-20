@@ -1,6 +1,6 @@
-const CACHE='mahjong-link-pwa-v5';
+const CACHE='mahjong-link-pwa-v6';
 const TILES=Array.from({length:27},(_,i)=>`./tiles/tile-real-${i}.png?v=10`);
-const CORE=['./','./index.html','./compact.css?v=13','./font-fixes.css?v=13','./board-10x10.css?v=13','./theme-v4.css?v=13','./overlays-v6.css?v=13','./pwa-v9.css?v=13','./ui-overlays.js?v=13','./cache-progress.js?v=13','./manifest.webmanifest','./mahjong-serif.woff2','./icons/icon-180.png','./icons/icon-192.png','./icons/icon-512.png',...TILES];
+const CORE=['./','./index.html','./compact.css?v=14','./font-fixes.css?v=14','./board-10x10.css?v=14','./theme-v4.css?v=14','./overlays-v6.css?v=14','./pwa-v9.css?v=14','./ui-overlays.js?v=14','./cache-progress.js?v=14','./manifest.webmanifest','./mahjong-serif.woff2','./icons/icon-180.png','./icons/icon-192.png','./icons/icon-512.png',...TILES];
 const report=(done,total,complete=false)=>self.clients.matchAll({includeUncontrolled:true,type:'window'}).then(clients=>clients.forEach(client=>client.postMessage({type:'CACHE_PROGRESS',done,total,complete})));
 self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);let done=0;for(const asset of CORE){await cache.add(asset);done++;await report(done,CORE.length,done===CORE.length)}await self.skipWaiting()})()));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)));await self.clients.claim();await report(CORE.length,CORE.length,true)})()));
