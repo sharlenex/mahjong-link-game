@@ -15,4 +15,4 @@ function pick(i){if(busy)return;if(!running){running=true;ui()}let p=[i/C|0,i%C]
 function check(){ui();if(!board.some(v=>v!=null)){running=false;let reward=20+(level/10|0)*5;gems+=reward;max=Math.max(max,Math.min(199,level+1));localStorage.mjMax=max;localStorage.mjGems=gems;$('#reward').textContent=`奖励 ◆${reward}，下一关已激活`;$('#win').classList.add('show')}else if(!move())shuffleBoard()}
 function shuffleBoard(){let pos=board.map((v,i)=>v==null?-1:i).filter(i=>i>=0),v=sh(pos.map(i=>board[i]));pos.forEach((p,i)=>board[p]=v[i]);draw();$('#msg').textContent='无解，已自动刷新'}
 $('#hint').onclick=()=>{if(gems<15)return;let m=move();if(m){gems-=15;sel=m[0];draw();$('#msg').textContent='已标出一张可连接的牌';ui()}};$('#refresh').onclick=()=>{if(gems<30)return;gems-=30;shuffleBoard();ui()};$('#clear').onclick=()=>{if(gems<60)return;gems-=60;clearMode=true;$('#msg').textContent='点击要消除的花色';ui()};$('#next').onclick=()=>start(Math.min(199,level+1));setInterval(()=>{if(running&&!busy){time++;$('#clock').textContent=String(time/60|0).padStart(2,'0')+':'+String(time%60).padStart(2,'0')}},1000);start(0);
-</script></body></html>
+</script><link rel="stylesheet" href="compact.css"></body></html>
