@@ -1,7 +1,7 @@
-const CACHE='mahjong-link-pwa-v11';
-const TILES=Array.from({length:34},(_,i)=>`./tiles/tile-real-${i}.png?v=19`);
-const SPECIAL=['back','ice','wood','stone'].map(name=>`./special/${name}.png?v=19`);
-const CORE=['./','./index.html','./compact.css?v=19','./font-fixes.css?v=19','./board-10x10.css?v=19','./theme-v4.css?v=19','./overlays-v6.css?v=19','./pwa-v9.css?v=19','./obstacles-v19.css?v=19','./obstacles-v19.js?v=19','./ui-overlays.js?v=19','./cache-progress.js?v=19','./save-tools.js?v=19','./manifest.webmanifest','./mahjong-serif.woff2','./icons/icon-180.png','./icons/icon-192.png','./icons/icon-512.png',...TILES,...SPECIAL];
+const CACHE='mahjong-link-pwa-v12';
+const TILES=Array.from({length:34},(_,i)=>`./tiles/tile-real-${i}.png?v=20`);
+const SPECIAL=['back','ice','wood','stone'].map(name=>`./special/${name}.png?v=20`);
+const CORE=['./','./index.html','./compact.css?v=20','./font-fixes.css?v=20','./board-10x10.css?v=20','./theme-v4.css?v=20','./overlays-v6.css?v=20','./pwa-v9.css?v=20','./obstacles-v19.css?v=20','./obstacles-v19.js?v=20','./ui-overlays.js?v=20','./cache-progress.js?v=20','./save-tools.js?v=20','./manifest.webmanifest','./mahjong-serif.woff2','./icons/icon-180.png','./icons/icon-192.png','./icons/icon-512.png',...TILES,...SPECIAL];
 const report=(done,total,complete=false)=>self.clients.matchAll({includeUncontrolled:true,type:'window'}).then(clients=>clients.forEach(client=>client.postMessage({type:'CACHE_PROGRESS',done,total,complete})));
 const download=async(name=CACHE)=>{const cache=await caches.open(name);let done=0;for(const asset of CORE){await cache.add(asset);done++;await report(done,CORE.length,done===CORE.length)}};
 const refresh=async()=>{const temp=CACHE+'-refresh';await caches.delete(temp);await download(temp);const source=await caches.open(temp);const requests=await source.keys();await caches.delete(CACHE);const target=await caches.open(CACHE);for(const request of requests)await target.put(request,await source.match(request));await caches.delete(temp);await report(CORE.length,CORE.length,true)};
